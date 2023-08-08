@@ -1,17 +1,25 @@
-import os
+# clean_folder/clean_folder/clean.py
 
-def clean_folder(folder_path):
-    # Your previous code for parsing the folder goes here
-    # ...
+import argparse
 
-if __name__ == "__main__":
-    # If you want to add a command-line interface for testing
-    # when calling clean.py directly, you can do that here.
-    # This part won't affect the console script behavior.
-    import argparse
+def recursive_decode(encoded_list):
+    # Your recursive decode function here
 
-    parser = argparse.ArgumentParser(description="Clean folder script")
-    parser.add_argument("folder_path", help="Path to the folder to clean")
+def recursive_encode(data):
+    # Your recursive encode function here
+
+def main():
+    parser = argparse.ArgumentParser(description='Clean Folder Tool')
+    parser.add_argument('command', choices=['decode', 'encode'], help='Specify the command: decode or encode')
+    parser.add_argument('data', help='Data to process')
     args = parser.parse_args()
 
-    clean_folder(args.folder_path)
+    if args.command == 'decode':
+        decoded = recursive_decode(args.data)
+        print(decoded)
+    elif args.command == 'encode':
+        encoded = recursive_encode(args.data)
+        print(encoded)
+
+if __name__ == '__main__':
+    main()
