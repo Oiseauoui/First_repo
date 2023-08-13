@@ -145,6 +145,28 @@ def clean_folder(folder_path):
 
         sort_folder(folder_path)
 
+    
+    #def run():
+        # screen = Screen()
+        # screen.setup(width=550, height=500) 
+        # turtles = create_turtle() 
+        # user_bet = screen.textinput(title='Make your bet',
+        #                             prompt='Who will be win on race(yellow, red, green)'),
+        # game(user_bet, turtles) 
+        # screen.exitonclick()
+
+    
+        # If you want to add a command-line interface for testing
+        # when calling clean.py directly, you can do that here.
+        # This part won't affect the console script behavior.
+        import argparse
+
+        parser = argparse.ArgumentParser(description="Clean folder script")
+        parser.add_argument("folder_path", help="Path to the folder to clean")
+        args = parser.parse_args()
+
+        clean_folder(args.folder_path)
+
         # Print the results
         print("List of files in each category:")
         print("Images:", os.listdir(os.path.join(folder_path, 'images')))
@@ -156,18 +178,5 @@ def clean_folder(folder_path):
         print("Archives:", os.listdir(os.path.join(folder_path, 'archives')))
         print("\nList of all extensions known to the script:", sorted(known_extensions))
         print("List of all extensions unknown to the script:", sorted(unknown_extensions))
-
     if __name__ == "__main__":
-        main()
-
-    #if __name__ == "__main__":
-        # If you want to add a command-line interface for testing
-        # when calling clean.py directly, you can do that here.
-        # This part won't affect the console script behavior.
-        import argparse
-
-        parser = argparse.ArgumentParser(description="Clean folder script")
-        parser.add_argument("folder_path", help="Path to the folder to clean")
-        args = parser.parse_args()
-
-        clean_folder(args.folder_path)
+            main()
