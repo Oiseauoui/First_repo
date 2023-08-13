@@ -19,16 +19,16 @@ known_extensions = set()
 # List to keep track of unknown file extensions found in the target folder
 unknown_extensions = set()
 
-from unidecode import unidecode
+# from unidecode import unidecode
 
-def normalize(s):
-    # Transliterate Cyrillic characters into Latin using unidecode
-    normalized = unidecode(s)
+# def normalize(s):
+#     # Transliterate Cyrillic characters into Latin using unidecode
+#     normalized = unidecode(s)
 
-    # Replace all characters except Latin letters and numbers with '_'
-    normalized = ''.join(c if c.isalnum() and c.isascii() else '_' for c in normalized)
+#     # Replace all characters except Latin letters and numbers with '_'
+#     normalized = ''.join(c if c.isalnum() and c.isascii() else '_' for c in normalized)
 
-    return normalized
+#     return normalized
 
 def process_image(file_path):
     # Move images to the images folder
@@ -54,6 +54,7 @@ def process_document(file_path):
     # Move documents to the documents folder
     destination = os.path.join(os.path.dirname(file_path), 'documents', os.path.basename(file_path))
     shutil.move(file_path, destination)
+
 
 def process_music(file_path):
     # Move music files to the music folder
@@ -135,10 +136,9 @@ def main():
 
     folder_path = sys.argv[1]
 
-    # Create destination folders if they don't exist
+   # Create destination folders if they don't exist
     for folder in ('images', 'videos', 'documents', 'music', 'archives', 'grafic', 'internet'):
         os.makedirs(os.path.join(folder_path, folder), exist_ok=True)
-
     sort_folder(folder_path)
 
     # Print the results
