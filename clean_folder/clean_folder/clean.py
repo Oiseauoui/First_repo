@@ -3,7 +3,6 @@ import sys
 import shutil
 import zipfile
 
-from clean_folder.clean_folder import clean_folder
 
 def clean_folder(folder_path):
     # Your previous code for parsing the folder goes here
@@ -23,46 +22,91 @@ def clean_folder(folder_path):
     # List to keep track of unknown file extensions found in the target folder
     unknown_extensions = set()
 
-    # from unidecode import unidecode
+    from unidecode import unidecode
 
-    # def normalize(s):
-    #     # Transliterate Cyrillic characters into Latin using unidecode
-    #     normalized = unidecode(s)
+    def normalize(s):
+        # Transliterate Cyrillic characters into Latin using unidecode
+        normalized = unidecode(s)
 
-    #     # Replace all characters except Latin letters and numbers with '_'
-    #     normalized = ''.join(c if c.isalnum() and c.isascii() else '_' for c in normalized)
+        # Replace all characters except Latin letters and numbers with '_'
+        normalized = ''.join(c if c.isalnum() and c.isascii() else '_' for c in normalized)
 
-    #     return normalized
+        return normalized
 
     def process_image(file_path):
-        # Move images to the images folder
         destination = os.path.join(os.path.dirname(file_path), 'images', os.path.basename(file_path))
-        shutil.move(file_path, destination)
+        
+        if not os.path.exists(os.path.dirname(destination)):
+            os.makedirs(os.path.dirname(destination))
+        
+        try:
+            shutil.move(file_path, destination)
+        except Exception as e:
+            print(f"An error occurred while moving: {e}")
+
 
     def process_grafic(file_path):
-        # Move grafic to the grafic folder
         destination = os.path.join(os.path.dirname(file_path), 'grafic', os.path.basename(file_path))
-        shutil.move(file_path, destination)
+        
+        if not os.path.exists(os.path.dirname(destination)):
+            os.makedirs(os.path.dirname(destination))
+        
+        try:
+            shutil.move(file_path, destination)
+        except Exception as e:
+            print(f"An error occurred while moving: {e}")
+
 
     def process_internet(file_path):
-        # Move internet to the internet folder
         destination = os.path.join(os.path.dirname(file_path), 'internet', os.path.basename(file_path))
-        shutil.move(file_path, destination)
+        
+        if not os.path.exists(os.path.dirname(destination)):
+            os.makedirs(os.path.dirname(destination))
+        
+        try:
+            shutil.move(file_path, destination)
+        except Exception as e:
+            print(f"An error occurred while moving: {e}")
+
 
     def process_video(file_path):
-        # Move videos to the videos folder
         destination = os.path.join(os.path.dirname(file_path), 'videos', os.path.basename(file_path))
-        shutil.move(file_path, destination)
+        
+        if not os.path.exists(os.path.dirname(destination)):
+            os.makedirs(os.path.dirname(destination))
+        
+        try:
+            shutil.move(file_path, destination)
+        except Exception as e:
+            print(f"An error occurred while moving: {e}")
+
+
 
     def process_document(file_path):
-    # Move documents to the documents folder
         destination = os.path.join(os.path.dirname(file_path), 'documents', os.path.basename(file_path))
-        shutil.move(file_path, destination)
+        
+        if not os.path.exists(os.path.dirname(destination)):
+            os.makedirs(os.path.dirname(destination))
+        
+        try:
+            shutil.move(file_path, destination)
+        except Exception as e:
+            print(f"An error occurred while moving: {e}")
+
+
+
 
     def process_music(file_path):
-        # Move music files to the music folder
         destination = os.path.join(os.path.dirname(file_path), 'music', os.path.basename(file_path))
-        shutil.move(file_path, destination)
+        
+        if not os.path.exists(os.path.dirname(destination)):
+            os.makedirs(os.path.dirname(destination))
+        
+        try:
+            shutil.move(file_path, destination)
+        except Exception as e:
+            print(f"An error occurred while moving: {e}")
+
 
     def process_archive(file_path, password=None):
         destination_folder = os.path.join(os.path.dirname(file_path), 'archives')
@@ -95,6 +139,8 @@ def clean_folder(folder_path):
         
     def process_unknown(file_path):
         # Do nothing for files with unknown extensions
+        # # Print a message for files with unknown extensions
+        # print(f"Unknown extension: {file_path}")
         pass
 
     def sort_folder(folder_path):
@@ -139,33 +185,10 @@ def clean_folder(folder_path):
 
         folder_path = sys.argv[1]
 
-        # Create destination folders if they don't exist
+    # Create destination folders if they don't exist
         for folder in ('images', 'videos', 'documents', 'music', 'archives', 'grafic', 'internet'):
             os.makedirs(os.path.join(folder_path, folder), exist_ok=True)
-
         sort_folder(folder_path)
-
-    
-    #def run():
-        # screen = Screen()
-        # screen.setup(width=550, height=500) 
-        # turtles = create_turtle() 
-        # user_bet = screen.textinput(title='Make your bet',
-        #                             prompt='Who will be win on race(yellow, red, green)'),
-        # game(user_bet, turtles) 
-        # screen.exitonclick()
-
-    
-        # If you want to add a command-line interface for testing
-        # when calling clean.py directly, you can do that here.
-        # This part won't affect the console script behavior.
-        import argparse
-
-        parser = argparse.ArgumentParser(description="Clean folder script")
-        parser.add_argument("folder_path", help="Path to the folder to clean")
-        args = parser.parse_args()
-
-        clean_folder(args.folder_path)
 
         # Print the results
         print("List of files in each category:")
@@ -178,5 +201,6 @@ def clean_folder(folder_path):
         print("Archives:", os.listdir(os.path.join(folder_path, 'archives')))
         print("\nList of all extensions known to the script:", sorted(known_extensions))
         print("List of all extensions unknown to the script:", sorted(unknown_extensions))
+
     if __name__ == "__main__":
-            main()
+        main()
