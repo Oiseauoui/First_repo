@@ -1,0 +1,7 @@
+name: Bill, birthday: 1975.09.02,
+name: Jill, birthday: 1985.08.28,
+name: Kim, birthday: 1965.08.29,
+name: Yang, birthday: 1955.08.31,
+name: Yulia, birthday: 1987.09.02,
+name: Ali, birthday: 1966.04.22,
+name: Nik, birthday: 1972.09.01,
