@@ -1,10 +1,7 @@
 # main.py
 
 from pathlib import Path
-from add import add_contact
-from show_all import show_all_contacts
-from phone import get_phone
-from change import change_contact
+
 
 def get_script_directory():
     return Path(__file__).parent
