@@ -32,13 +32,6 @@ class Phone(Field):
         return True
 
 
-    @staticmethod
-    def is_valid_phone(value):
-        # Use regular expression to check for a valid phone number
-        # The regex pattern matches a 10-digit number with optional plus sign at the beginning
-        pattern = r'^\+?\d{10}$'
-        return bool(re.match(pattern, value))
-
 class Record:
     def __init__(self, name):
         self.name = Name(name)
