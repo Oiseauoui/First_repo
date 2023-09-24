@@ -230,6 +230,7 @@ def main():
         'change': handle_change,
         'show all': handle_show,
         'phone': handle_phone,
+        # 'birthday': handle_birthday,  # Added 'birthday' command
     }
 
     while True:
